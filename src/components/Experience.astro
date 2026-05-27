@@ -1,0 +1,126 @@
+---
+/**
+ * Experience Component
+ *
+ * Purpose: Displays the professional experience timeline. Iterates over a predefined
+ * set of jobs to render a responsive timeline with icons, dates, bullet points, and 
+ * technology tags for each role.
+ */
+
+import { Icon } from "astro-icon/components";
+
+/**
+ * Data structure defining the professional experience entries.
+ * Maps directly to i18n translation keys for internationalization.
+ */
+const experienceOptions = [
+    {
+        i18nPrefix: "experience.job1",
+        bullets: ["li1", "li2", "li3", "li4", "li5"],
+        tags: ["PHP", "JavaScript", "HTML", "CSS", "MySQL", "SSE", "Docker", "Git"],
+    },
+    {
+        i18nPrefix: "experience.job2",
+        bullets: ["li1", "li2", "li3", "li4", "li5"],
+        tags: ["Blue Prism", "Work Queues", "SQL", "Azure DevOps", "Power Automate"],
+    },
+];
+---
+
+<!-- ==================== EXPERIENCE ==================== -->
+<section id="experience" class="relative py-24 md:py-32">
+    <!-- Main Content Container -->
+    <div class="max-w-5xl mx-auto px-6 relative">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <span
+                class="reveal text-primary-400 text-xs font-mono uppercase tracking-widest"
+                data-i18n="experience.title"></span>
+            <h2
+                class="reveal delay-100 text-3xl md:text-4xl font-semibold tracking-tight gradient-text mt-3"
+                data-i18n="experience.heading"
+            >
+            </h2>
+            <p
+                class="reveal delay-200 text-secondary-400 font-light mt-4 max-w-xl mx-auto"
+                data-i18n="experience.subtitle"
+            >
+            </p>
+        </div>
+
+        <!-- Timeline Wrapper -->
+        <div class="relative">
+            <!-- Timeline Entries Container -->
+            <div class="space-y-6 sm:space-y-12">
+                {
+                    experienceOptions.map((job, index) => (
+                        <div class={`reveal relative flex gap-6 md:gap-8 ${index > 0 ? "delay-200" : ""}`}>
+                            
+                            <!-- Timeline Dot and Line connecting entries -->
+                            <div class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 z-10 bg-primary-100 dark:bg-primary-800">
+                                    <Icon
+                                        name={index === 0 ? "tabler:briefcase-filled" : "tabler:briefcase-2"}
+                                        class="w-5 h-5 text-primary-600 dark:text-primary-300"
+                                    />
+                                </div>
+
+                                <!-- Render connecting line only if it's not the last item -->
+                                {index !== experienceOptions.length - 1 && (
+                                    <div class="w-0.5 flex-1 bg-gradient-to-b from-primary-200 dark:from-primary-800 to-transparent mt-2" />
+                                )}
+                            </div>
+
+                            <!-- Experience Card Content -->
+                            <div class={index !== experienceOptions.length - 1 ? "pb-12 flex-1" : "flex-1"}>
+                                <div class="card-hover bg-primary-100/30 dark:bg-primary-950/50 border border-primary-200/60 dark:border-primary-600/40 rounded-2xl p-6 sm:p-8">
+                                    
+                                    <!-- Job Title, Company, and Date -->
+                                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                                        <div>
+                                            <h3
+                                                class="text-lg font-medium text-secondary-800 dark:text-secondary tracking-tight"
+                                                data-i18n={`${job.i18nPrefix}.title`}
+                                            />
+                                            <p
+                                                class="text-primary-400 text-sm font-medium"
+                                                data-i18n={`${job.i18nPrefix}.company`}
+                                            />
+                                        </div>
+                                        <span
+                                            class="text-xs font-mono text-primary-600 dark:text-primary-300 bg-primary-100 dark:bg-primary-800 px-3 py-1 rounded-full self-start"
+                                            data-i18n={`${job.i18nPrefix}.date`}
+                                        />
+                                    </div>
+
+                                    <!-- Job Responsibilities (Bullets) -->
+                                    <ul class="space-y-2">
+                                        {job.bullets.map((bulletNum) => (
+                                            <li class="flex items-start gap-2 text-secondary-600 dark:text-secondary-400 text-sm font-light">
+                                                <Icon
+                                                    name="tabler:chevron-right"
+                                                    class="w-3.5 h-3.5 text-primary-500 mt-0.5 shrink-0"
+                                                />
+                                                <span data-i18n={`${job.i18nPrefix}.${bulletNum}`} />
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <!-- Technologies/Tags used in this job -->
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        {job.tags.map((tag) => (
+                                            <span class="text-[10px] font-medium uppercase tracking-wider text-primary-400 bg-primary-500/10 px-2.5 py-1 rounded-md">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

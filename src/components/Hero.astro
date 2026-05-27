@@ -1,0 +1,81 @@
+---
+/**
+ * Hero Component
+ *
+ * Purpose: The main landing section of the portfolio. It displays a welcoming
+ * message, user status, main call-to-action (CTA) buttons, and background
+ * visual effects (glows and grid pattern) to create a strong first impression.
+ */
+
+import { Icon } from "astro-icon/components";
+---
+
+<!-- ==================== HERO SECTION ==================== --><!-- 
+  Main Wrapper: 
+  Full screen height, relative positioning for background elements, 
+  and centered flex layout for content.
+-->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <!-- Decorative: Background glowing orbs -->
+    <div class="hero-glow bg-primary-600 top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="hero-glow bg-primary-500/20 bottom-0 right-1/4" style="width:400px;height:400px;"></div>
+
+    <!-- Decorative: SVG Grid pattern overlay with theme-aware opacity -->
+    <div
+        class="absolute inset-0 opacity-[0.05] dark:opacity-[0.03] invert dark:invert-0 pointer-events-none"
+        style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22><line x1=%220%22 y1=%2260%22 x2=%2260%22 y2=%2260%22 stroke=%22white%22 stroke-width=%221%22/><line x1=%2260%22 y1=%220%22 x2=%2260%22 y2=%2260%22 stroke=%22white%22 stroke-width=%221%22/></svg>'); background-size: 60px 60px;"
+    >
+    </div>
+
+    <!-- Content Container: Constrained width, centered items -->
+    <div class="relative flex flex-col items-center max-w-5xl mx-auto px-6 text-center">
+        <!-- Status Badge: Shows current availability (e.g., "Available for work") -->
+        <div
+            class="reveal inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-600 dark:border-primary-300 bg-primary-100 dark:bg-primary-800 mb-8 cursor-default"
+        >
+            <span class="w-2 h-2 rounded-full bg-primary-600 dark:bg-primary-300 pulse-dot"></span>
+            <span
+                class="text-primary-600 dark:text-primary-300 text-xs font-medium tracking-wide"
+                data-i18n="hero.status"></span>
+        </div>
+
+        <!-- Main Heading: Dynamic localized title -->
+        <h1
+            class="reveal delay-100 text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tighter leading-[1.15] gradient-text mb-6"
+            data-i18n="hero.title"
+        >
+        </h1>
+
+        <!-- Subtitle: Brief description or tagline -->
+        <p
+            class="reveal delay-200 text-lg md:text-xl font-light text-secondary-600 dark:text-secondary-400 tracking-wide leading-relaxed max-w-2xl mx-auto mb-10"
+            data-i18n="hero.subtitle"
+        >
+        </p>
+
+        <!-- Call-to-Action (CTA) Actions: Links to Work and Contact sections -->
+        <div class="reveal delay-300 inline-grid grid-cols-1 sm:grid-cols-2 gap-4 w-3/5 sm:w-96">
+            <!-- Primary Action: View Projects -->
+            <a
+                href="#projects"
+                class="btn-primary text-secondary text-sm font-semibold px-8 py-3.5 rounded-xl inline-flex items-center justify-center gap-2"
+                data-i18n="hero.btn.work"
+            >
+            </a>
+
+            <!-- Secondary Action: Contact -->
+            <a
+                href="#contact"
+                class="text-primary-400 dark:text-secondary text-sm font-medium px-8 py-3.5 rounded-xl border border-primary-400 dark:border-secondary/60 hover:bg-primary-100/50 dark:hover:bg-primary-900/30 transition-all duration-300 inline-flex items-center justify-center gap-4"
+            >
+                <Icon name="tabler:mail" class="w-5 h-5" />
+                <span data-i18n="hero.btn.contact"></span>
+            </a>
+        </div>
+
+        <!-- Scroll Indicator: Animated mouse icon hinting at more content below -->
+        <div class="reveal delay-500 mt-32 float-anim">
+            <Icon name="tabler:mouse-filled" class="w-6 h-6 text-secondary-600" />
+        </div>
+    </div>
+</section>

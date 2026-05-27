@@ -1,0 +1,203 @@
+---
+/**
+ * About Component
+ *
+ * Purpose: Displays the "About Me" section of the portfolio. Features a profile image
+ * with a floating badge, a brief biography, and animated statistics counters that trigger
+ * when the component scrolls into view.
+ */
+
+import { Icon } from "astro-icon/components";
+
+const statOptions = [
+    { icon: "tabler:building", targetValue: 2, i18nKey: "about.stats.internships" },
+    { icon: "tabler:folder", targetValue: 6, i18nKey: "about.stats.projects" },
+    { icon: "tabler:cpu", targetValue: 10, i18nKey: "about.stats.technologies" },
+    { icon: "tabler:coffee", targetValue: 900, i18nKey: "about.stats.hours" },
+];
+---
+
+<!-- ==================== ABOUT ME ==================== --><!-- 
+  Main Wrapper: 
+  Vertical padding and centered container for the grid layout.
+-->
+<section id="about" class="relative py-24 md:py-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Grid Layout: 1 column on mobile, 2 columns on desktop -->
+        <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+            <!-- Left Column: Profile Image and Floating Badge -->
+            <div class="reveal">
+                <div class="relative">
+                    <!-- Profile Image Container -->
+                    <div
+                        class="aspect-square max-w-md mx-auto rounded-2xl overflow-hidden border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]"
+                    >
+                        <img src="/src/assets/HM.jpg" alt="Hugo Macías Jiménez" class="w-full h-full object-cover" />
+                        <!-- Gradient Overlay for blending -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-secondary-50 dark:from-primary via-transparent to-transparent"
+                        >
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge: Highlights current role or status -->
+                    <div
+                        class="absolute -bottom-9 -right-4 md:right-8 bg-secondary-50 dark:bg-primary border border-primary-400 dark:border-primary-700/60 rounded-xl px-4 py-3 shadow-xl cursor-default"
+                    >
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-primary-100/50 dark:bg-primary-900/50 border border-primary-200/50 dark:border-primary-900 flex items-center justify-center"
+                            >
+                                <Icon
+                                    name="tabler:stack-2-filled"
+                                    class="w-6 h-6 text-primary-600 dark:text-primary-400"
+                                />
+                            </div>
+                            <div>
+                                <p
+                                    class="text-secondary-900 dark:text-secondary text-sm font-medium"
+                                    data-i18n="about.badge.title"
+                                >
+                                </p>
+                                <p class="text-secondary-500 text-xs" data-i18n="about.badge.subtitle"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Text Content and Statistics -->
+            <div>
+                <!-- Section Header -->
+                <div class="reveal">
+                    <span class="text-primary-400 text-xs font-mono uppercase tracking-widest" data-i18n="about.title"
+                    ></span>
+                    <h2
+                        class="text-3xl md:text-4xl font-semibold tracking-tight gradient-text mt-3 mb-6"
+                        data-i18n="about.heading"
+                    >
+                    </h2>
+                </div>
+
+                <!-- Biography Paragraphs -->
+                <div class="reveal delay-100 space-y-4">
+                    <p
+                        class="text-secondary-600 dark:text-secondary-400 font-light leading-relaxed"
+                        data-i18n="about.p1"
+                    >
+                    </p>
+                    <p
+                        class="text-secondary-600 dark:text-secondary-400 font-light leading-relaxed"
+                        data-i18n="about.p2"
+                    >
+                    </p>
+                    <p
+                        class="text-secondary-600 dark:text-secondary-400 font-light leading-relaxed"
+                        data-i18n="about.p3"
+                    >
+                    </p>
+                </div>
+
+                <!-- Quick Stats Grid -->
+                <div
+                    class="reveal delay-200 grid grid-cols-2 sm:grid-cols-4 gap-2 items-center justify-between text-quaternary-700 min-w-0 mt-8"
+                >
+                    {
+                        statOptions.map((option) => (
+                            <div class="flex items-center gap-3">
+                                <div class="bg-primary-100 dark:bg-primary-800 p-2.5 rounded-2xl shadow-sm">
+                                    <Icon name={option.icon} class="h-6 w-6 text-primary-600 dark:text-primary-300" />
+                                </div>
+
+                                <div class="flex flex-col">
+                                    <p
+                                        class="text-xs text-secondary-600 dark:text-secondary-500 mt-1"
+                                        data-i18n={option.i18nKey}
+                                    />
+                                    <p class="text-2xl font-semibold text-secondary-800 dark:text-secondary">
+                                        {option.icon === "tabler:coffee" || option.icon === "tabler:cpu" ? "+" : ""}
+                                        <span class="stat-counter" data-target={option.targetValue}>
+                                            0
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    /**
+     * Initializes the statistics counters animation once the DOM is fully loaded.
+     */
+    document.addEventListener("DOMContentLoaded", () => {
+        // Select all DOM elements representing the counters
+        const counters = document.querySelectorAll(".stat-counter");
+
+        /**
+         * Animates a counter from 0 to its target value smoothly.
+         *
+         * @param {HTMLElement} element - The DOM element containing the counter value.
+         *
+         * Logic:
+         * - Reads the target value from the 'data-target' attribute.
+         * - Uses requestAnimationFrame to smoothly increment the number over a set duration.
+         * - Applies an ease-out cubic function so the counter slows down near the end.
+         */
+        const animateCounter = (element) => {
+            const target = parseInt(element.getAttribute("data-target") || "0", 10);
+            const duration = 3000;
+            const start = performance.now();
+
+            const step = (timestamp) => {
+                // Calculate animation progress (0 to 1)
+                const progress = Math.min((timestamp - start) / duration, 1);
+                // Apply an ease-out cubic curve: 1 - (1-x)^3
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+
+                // ¡AQUÍ ESTÁ LA MAGIA! Cambiamos Math.floor por Math.round
+                // Calculate current value based on eased progress
+                const currentValue = Math.round(easeProgress * target);
+
+                // Update text content only if the value has changed
+                if (element.textContent !== currentValue.toString()) {
+                    element.textContent = currentValue.toString();
+                }
+
+                // Continue animation or set to exact target if done
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = target.toString();
+                }
+            };
+
+            window.requestAnimationFrame(step);
+        };
+
+        /**
+         * IntersectionObserver to trigger the counter animation only when
+         * the counter elements scroll into the user's viewport.
+         */
+        const observer = new IntersectionObserver(
+            (entries, obs) => {
+                entries.forEach((entry) => {
+                    // Trigger animation when at least 50% of the element is visible
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        // Stop observing once animated
+                        obs.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.5 },
+        );
+
+        // Attach observer to all counter elements
+        counters.forEach((counter) => observer.observe(counter));
+    });
+</script>

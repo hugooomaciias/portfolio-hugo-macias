@@ -1,0 +1,205 @@
+---
+/**
+ * Navbar Component
+ *
+ * Purpose: A responsive navigation bar that provides in-page smooth scrolling links,
+ * a theme toggle (light/dark mode), a language toggle (EN/ES), and a mobile menu overlay.
+ */
+
+import { Icon } from "astro-icon/components";
+
+const navOptions = [
+    { href: "#about", i18nKey: "nav.about" },
+    { href: "#experience", i18nKey: "nav.experience" },
+    { href: "#projects", i18nKey: "nav.projects" },
+    { href: "#skills", i18nKey: "nav.skills" },
+];
+---
+
+<!-- Main Navigation Container -->
+<nav
+    id="main-nav"
+    class="fixed top-0 left-0 right-0 z-50 nav-blur bg-primary-50/80 dark:bg-primary/80 border-b border-primary-100 dark:border-primary-950 transition-colors"
+>
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2.5 group">
+            <img src="/src/assets/HM_Avatar.svg" alt="Logo" class="w-8 h-8" />
+            <span class="text-secondary-800 dark:text-secondary font-semibold text-sm tracking-tight">
+                Hugo Macías
+            </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex items-center gap-8">
+                {
+                    navOptions.map((option) => (
+                        <a
+                            href={option.href}
+                            class="nav-link text-sm font-medium text-secondary-800 dark:text-secondary hover:text-primary-400 dark:hover:text-primary-400 transition-colors duration-300"
+                            data-i18n={option.i18nKey}
+                        />
+                    ))
+                }
+
+                <a
+                    href="#contact"
+                    class="btn-primary text-secondary text-[13px] font-semibold px-4 py-1.5 rounded-lg inline-flex items-center gap-1.5"
+                    data-i18n="nav.contact"
+                >
+                </a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+                <button
+                    id="langToggle"
+                    class="text-secondary-800 dark:text-secondary p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg transition-colors font-semibold text-xs tracking-wider cursor-pointer"
+                    aria-label="Toggle Language"></button>
+
+                <button
+                    id="themeToggle"
+                    class="text-secondary-800 dark:text-secondary p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg transition-colors font-semibold text-xs tracking-wider cursor-pointer"
+                    aria-label="Toggle Theme"
+                >
+                    <Icon name="tabler:moon" class="w-5 h-5 dark:hidden" />
+                    <Icon name="tabler:sun" class="w-5 h-5 hidden dark:block" />
+                </button>
+
+                <button
+                    id="menuBtn"
+                    class="md:hidden text-secondary-800 dark:text-secondary p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg transition-colors font-semibold text-xs tracking-wider cursor-pointer"
+                >
+                    <Icon name="tabler:menu-4" class="w-5 h-5" />
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div
+    id="mobileNav"
+    class="mobile-nav fixed inset-0 z-50 bg-primary-50 dark:bg-primary nav-blur flex flex-col items-center justify-center gap-8"
+>
+    <button
+        id="closeMenuBtn"
+        class="absolute top-5 right-6 text-secondary-800 dark:text-secondary p-2 hover:bg-primary-100 dark:hover:bg-primary-800 rounded-lg transition-colors"
+    >
+        <Icon name="tabler:x" class="w-6 h-6" />
+    </button>
+
+    {
+        navOptions.map((option) => (
+            <a
+                href={option.href}
+                class="mobile-link text-2xl font-medium text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+                data-i18n={option.i18nKey}
+            />
+        ))
+    }
+</div>
+
+<script>
+    /**
+     * Import the global setLanguage function to handle i18n logic.
+     */
+    import { setLanguage } from "../scripts/main.js";
+
+    // ==========================================
+    // Language Toggle Logic
+    // ==========================================
+    const langToggle = document.getElementById("langToggle");
+    if (langToggle) {
+        // Event listener to toggle between 'en' and 'es' when the language button is clicked
+        langToggle.addEventListener("click", () => {
+            const currentLang = localStorage.getItem("lang") || "en";
+            const newLang = currentLang === "en" ? "es" : "en";
+            setLanguage(newLang);
+        });
+    }
+
+    // ==========================================
+    // Theme Toggle Logic
+    // ==========================================
+    // Toggles between light and dark themes by adding/removing the 'dark' class
+    // on the document element and persisting the user's preference in localStorage.
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        if (isDark) {
+            document.documentElement.classList.remove("dark");
+            localStorage.setItem("theme", "light");
+        } else {
+            document.documentElement.classList.add("dark");
+            localStorage.setItem("theme", "dark");
+        }
+    });
+
+    /**
+     * DOM Element Selections for Mobile Menu functionality.
+     */
+    const menuBtn = document.getElementById("menuBtn");
+    const closeMenuBtn = document.getElementById("closeMenuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+
+    // Initialize the default or user-saved language when the page loads
+    document.addEventListener("DOMContentLoaded", () => {
+        const savedLang = localStorage.getItem("lang") || "en";
+        setLanguage(savedLang);
+    });
+
+    // ==========================================
+    // Toggle Mobile Menu Logic
+    // ==========================================
+    // Opens the mobile menu overlay and prevents background scrolling
+    menuBtn?.addEventListener("click", () => {
+        mobileNav?.classList.add("open");
+        document.body.style.overflow = "hidden"; // prevent scrolling
+    });
+
+    // Closes the mobile menu overlay and restores background scrolling
+    const closeMenu = () => {
+        mobileNav?.classList.remove("open");
+        document.body.style.overflow = "";
+    };
+
+    // Attach close event to the close button and all mobile navigation links
+    closeMenuBtn?.addEventListener("click", closeMenu);
+    mobileLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    // ==========================================
+    // Scroll Spy Logic
+    // ==========================================
+    // Highlights the active navigation link based on the user's scroll position
+    // by comparing the current scroll offset with section bounds.
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = Array.from(document.querySelectorAll("section"));
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            // Determine if the user has scrolled past one-third of the section
+            if (scrollY >= sectionTop - sectionHeight / 3) {
+                current = section.getAttribute("id") || "";
+            }
+        });
+
+        navLinks.forEach((link) => {
+            // Add active styles to the matching link, remove from others
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("text-primary-600", "dark:text-primary-400");
+                link.classList.remove("text-secondary-800", "dark:text-secondary");
+            } else {
+                link.classList.remove("text-primary-600", "dark:text-primary-400");
+                link.classList.remove("text-secondary-800", "dark:text-secondary");
+            }
+        });
+    });
+</script>

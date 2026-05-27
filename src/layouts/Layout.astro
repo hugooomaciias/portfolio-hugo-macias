@@ -1,0 +1,82 @@
+---
+/**
+ * Main Layout Component
+ *
+ * Purpose: Acts as the base HTML shell for all pages. It handles global CSS imports,
+ * metadata, external font/icon links, and prevents Flash of Unstyled Content (FOUC)
+ * by applying the user's preferred theme (dark/light) immediately on page load.
+ */
+
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<!-- Base HTML Document Setup -->
+<html lang="en" class="scroll-smooth">
+    <head>
+        <!-- Meta Information -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{title}</title>
+
+        <!-- External Scripts and Icons -->
+        <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <!-- Google Fonts (Inter) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- ========================================== -->
+        <!-- Early Theme Initialization Script -->
+        <!-- ========================================== -->
+        <script is:inline>
+            /**
+             * Immediately Invoked Function Expression (IIFE) to determine the initial theme.
+             * It runs before the body is parsed to prevent FOUC (Flash of Unstyled Content).
+             *
+             * Logic:
+             * 1. Checks localStorage for a previously saved 'theme' preference.
+             * 2. If no preference exists, checks the OS-level (prefers-color-scheme) setting.
+             * 3. Defaults to 'light' if neither is found.
+             */
+            const theme = (() => {
+                if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+                    return localStorage.getItem("theme");
+                }
+                if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                    return "dark";
+                }
+                return "light";
+            })();
+
+            // Apply the determined theme to the HTML root element
+            if (theme === "light") {
+                document.documentElement.classList.remove("dark");
+            } else {
+                document.documentElement.classList.add("dark");
+            }
+        </script>
+    </head>
+
+    <!-- Main Body Container -->
+    <body
+        class="font-inter text-secondary-900 dark:text-secondary bg-primary-50 dark:bg-primary antialiased overflow-x-hidden transition-colors duration-300"
+    >
+        <!-- Page Content Injected Here -->
+        <slot />
+
+        <!-- Global Application Scripts (Language, Interactivity, Scroll Animations) -->
+        <script src="../scripts/main.js"></script>
+    </body>
+</html>

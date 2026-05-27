@@ -1,0 +1,146 @@
+---
+
+---
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="relative py-24 md:py-32">
+    <div class="max-w-3xl mx-auto px-6">
+        <!-- Section header -->
+        <div class="text-center mb-12">
+            <span
+                class="reveal text-primary-400 text-xs font-mono uppercase tracking-widest"
+                >Contact</span
+            >
+            <h2
+                class="reveal delay-100 text-3xl md:text-4xl font-semibold tracking-tight gradient-text mt-3"
+            >
+                Let's Work Together
+            </h2>
+            <p
+                class="reveal delay-200 text-slate-400 font-light mt-4 max-w-lg mx-auto"
+            >
+                I'm always open to new opportunities, collaborations, or just a
+                friendly conversation about tech. Feel free to reach out!
+            </p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal delay-200">
+            <form
+                id="contactForm"
+                class="card-hover bg-white/80 dark:bg-[#0f172a]/60 border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-10 space-y-6"
+            >
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label
+                            class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2 block"
+                            >Name</label
+                        >
+                        <input
+                            type="text"
+                            placeholder="Your name"
+                            required
+                            class="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:bg-slate-100 dark:focus:bg-white/[0.08] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2 block"
+                            >Email</label
+                        >
+                        <input
+                            type="email"
+                            placeholder="you@example.com"
+                            required
+                            class="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:bg-slate-100 dark:focus:bg-white/[0.08] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300"
+                        />
+                    </div>
+                </div>
+                <div>
+                    <label
+                        class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2 block"
+                        >Subject</label
+                    >
+                    <input
+                        type="text"
+                        placeholder="What's this about?"
+                        class="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:bg-slate-100 dark:focus:bg-white/[0.08] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300"
+                    />
+                </div>
+                <div>
+                    <label
+                        class="text-xs font-medium text-slate-400 uppercase tracking-wider mb-2 block"
+                        >Message</label
+                    >
+                    <textarea
+                        rows="5"
+                        placeholder="Your message..."
+                        required
+                        class="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:border-primary-500/50 dark:focus:border-primary-500/50 focus:bg-slate-100 dark:focus:bg-white/[0.08] text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 resize-none"
+                    ></textarea>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <button
+                        type="submit"
+                        class="btn-primary text-white text-sm font-semibold px-8 py-3.5 rounded-xl inline-flex items-center gap-2 w-full sm:w-auto justify-center"
+                    >
+                        Send Message
+                        <span
+                            class="iconify"
+                            data-icon="lucide:send"
+                            data-width="16"></span>
+                    </button>
+                    <span class="text-slate-600 dark:text-slate-400 text-xs"
+                        >or email me directly at</span
+                    >
+                    <a
+                        href="mailto:hugo.macias@example.com"
+                        class="text-primary-400 hover:text-primary-300 text-xs font-medium transition-colors"
+                        >hugo.macias@example.com</a
+                    >
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Toast Notification -->
+<div
+    id="toast"
+    class="toast fixed bottom-6 right-6 z-[100] bg-white dark:bg-primary-950 border border-slate-200 dark:border-primary-500/30 rounded-xl p-4 shadow-2xl flex items-start gap-3 max-w-sm pointer-events-none"
+>
+    <div
+        class="w-8 h-8 rounded-lg bg-primary-500/20 flex items-center justify-center shrink-0"
+    >
+        <span
+            class="iconify text-primary-400"
+            data-icon="lucide:check-circle-2"
+            data-width="18"></span>
+    </div>
+    <div>
+        <h4 class="text-slate-900 dark:text-white text-sm font-medium mb-1">Message Sent!</h4>
+        <p class="text-slate-600 dark:text-slate-400 text-xs font-light leading-relaxed">
+            Thanks for reaching out. I'll get back to you as soon as possible.
+        </p>
+    </div>
+</div>
+
+<script>
+    const contactForm = document.getElementById("contactForm");
+    const toast = document.getElementById("toast");
+
+    contactForm?.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Show toast
+        toast?.classList.add("show");
+
+        // Hide toast after 3 seconds
+        setTimeout(() => {
+            toast?.classList.remove("show");
+        }, 3000);
+
+        // Reset form
+        (e.target as HTMLFormElement).reset();
+    });
+</script>

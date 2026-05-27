@@ -1,0 +1,21 @@
+{
+  "name": "astro-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.2",
+    "@iconify-json/tabler": "^1.2.35",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.3.0",
+    "typescript": "^5.7.3"
+  }
+}
