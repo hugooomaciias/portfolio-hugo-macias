@@ -1,205 +1,84 @@
 ---
+/**
+ * Skills Component
+ *
+ * Purpose: Displays the technical skills and proficiencies. Iterates over a predefined
+ * set of skill categories to render a responsive grid with icons and skill tags.
+ */
 
+import { Icon } from "astro-icon/components";
+
+/**
+ * Data structure defining the skills categories.
+ * Maps directly to i18n translation keys for internationalization.
+ */
+const skillCategories = [
+    {
+        title: "skills.category.languages",
+        icon: "tabler:code",
+        skills: ["Python", "Java", "C", "C++", "Haskell", "SQL", "PHP", "JavaScript", "TypeScript", "HTML/CSS"]
+    },
+    {
+        title: "skills.category.frameworks",
+        icon: "tabler:stack-2-filled",
+        skills: ["React", "Angular", "Astro", "Node.js", "Spring Boot", "Tailwind CSS"]
+    },
+    {
+        title: "skills.category.tools",
+        icon: "tabler:tool",
+        skills: ["VS Code", "IntelliJ", "PostgreSQL", "MySQL", "Git", "Docker", "Postman"]
+    }
+];
 ---
 
-<!-- ==================== SKILLS ==================== -->
+<!-- ==================== SKILLS SECTION ==================== -->
 <section id="skills" class="relative py-24 md:py-32">
-    <div
-        class="absolute bottom-0 right-0 w-[500px] h-[300px] bg-primary-500/5 rounded-full filter blur-[120px] pointer-events-none"
-    >
-    </div>
+    <div class="absolute bottom-0 right-0 w-[500px] h-[300px] bg-primary-500/5 rounded-full filter blur-[120px] pointer-events-none"></div>
 
+    <!-- Container: Max width constraint with responsive padding and relative positioning -->
     <div class="max-w-5xl mx-auto px-6 relative">
-        <!-- Section header -->
         <div class="text-center mb-16">
-            <span
-                class="reveal text-primary-400 text-xs font-mono uppercase tracking-widest"
-                >Skills</span
-            >
-            <h2
-                class="reveal delay-100 text-3xl md:text-4xl font-semibold tracking-tight gradient-text mt-3"
-            >
-                Technical Arsenal
-            </h2>
-            <p
-                class="reveal delay-200 text-slate-400 font-light mt-4 max-w-xl mx-auto"
-            >
-                Technologies and tools I've worked with across academic
-                projects, internships, and personal exploration.
-            </p>
+            <!-- Overline label: Category indicator with uppercase styling -->
+            <span class="reveal text-primary-400 text-xs font-mono uppercase tracking-widest" data-i18n="skills.title"></span>
+            
+            <!-- Main heading: Primary title with gradient text effect and staggered animation -->
+            <h2 class="reveal delay-100 text-3xl md:text-4xl font-semibold tracking-tight gradient-text mt-3" data-i18n="skills.heading"></h2>
+            
+            <!-- Descriptive subtitle: Additional context with secondary delay for progressive animation -->
+            <p class="reveal delay-200 text-slate-400 font-light mt-4 max-w-xl mx-auto" data-i18n="skills.subtitle"></p>
         </div>
 
+        <!-- Skills Entries Container -->
         <div class="grid md:grid-cols-3 gap-8">
-            <!-- Languages -->
-            <div class="reveal">
-                <div
-                    class="card-hover bg-white/80 dark:bg-[#0f172a]/60 border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-8"
-                >
-                    <div class="flex items-center gap-3 mb-6">
-                        <div
-                            class="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center"
-                        >
-                            <span
-                                class="iconify text-primary-400"
-                                data-icon="lucide:code-2"
-                                data-width="20"></span>
-                        </div>
-                        <h3
-                            class="text-base font-medium text-slate-900 dark:text-white tracking-tight"
-                        >
-                            Languages
-                        </h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >JavaScript</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >TypeScript</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Python</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Java</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >C</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >C++</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >PHP</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Haskell</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >SQL</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >HTML/CSS</span
-                        >
-                    </div>
-                </div>
-            </div>
+            {
+                skillCategories.map((category, index) => {
+                    const delayClass = index === 0 ? "" : `delay-${index * 100}`;
 
-            <!-- Frameworks -->
-            <div class="reveal delay-100">
-                <div
-                    class="card-hover bg-white/80 dark:bg-[#0f172a]/60 border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-8"
-                >
-                    <div class="flex items-center gap-3 mb-6">
-                        <div
-                            class="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center"
-                        >
-                            <span
-                                class="iconify text-primary-400"
-                                data-icon="lucide:layers"
-                                data-width="20"></span>
+                    return (
+                        <div class={`reveal ${delayClass}`}>
+                            <div class="h-full card-hover bg-white/80 dark:bg-[#0f172a]/60 border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-8">
+                                <div class="flex items-center gap-3 mb-6">
+                                    <div class="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center">
+                                        <Icon name={category.icon} class="w-5 h-5 text-primary-600 dark:text-primary-300" />
+                                    </div>
+                                    
+                                    <h3 class="text-base font-medium text-slate-900 dark:text-white tracking-tight" data-i18n={category.title}></h3>
+                                </div>
+                                
+                                <div class="flex flex-wrap gap-2">
+                                    {
+                                        category.skills.map((skill) => (
+                                            <span class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default">
+                                                {skill}
+                                            </span>
+                                        ))
+                                    }
+                                </div>
+                            </div>
                         </div>
-                        <h3
-                            class="text-base font-medium text-slate-900 dark:text-white tracking-tight"
-                        >
-                            Frameworks
-                        </h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >React</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Node.js</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Spring Boot</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Express</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Tailwind CSS</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Bootstrap</span
-                        >
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tools -->
-            <div class="reveal delay-200">
-                <div
-                    class="card-hover bg-white/80 dark:bg-[#0f172a]/60 border border-slate-200 dark:border-white/10 rounded-2xl p-6 md:p-8"
-                >
-                    <div class="flex items-center gap-3 mb-6">
-                        <div
-                            class="w-10 h-10 rounded-xl bg-primary-500/10 border border-primary-500/20 flex items-center justify-center"
-                        >
-                            <span
-                                class="iconify text-primary-400"
-                                data-icon="lucide:wrench"
-                                data-width="20"></span>
-                        </div>
-                        <h3
-                            class="text-base font-medium text-slate-900 dark:text-white tracking-tight"
-                        >
-                            Tools
-                        </h3>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Git</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Docker</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Linux</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >PostgreSQL</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >MySQL</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >VS Code</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >IntelliJ</span
-                        >
-                        <span
-                            class="skill-badge text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 rounded-lg cursor-default"
-                            >Postman</span
-                        >
-                    </div>
-                </div>
-            </div>
+                    );
+                })
+            }
         </div>
     </div>
 </section>

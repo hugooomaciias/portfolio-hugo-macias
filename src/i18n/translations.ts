@@ -55,13 +55,13 @@ export const translations = {
         "projects.inDevelopment": "In Development",
         "projects.main.desc": "Tikal is an advanced productivity and project management platform built with React using a headless architecture and real-time state synchronization. The application also integrates a global Time Tracker and an innovative gamified environment designed to boost deep focus",
         "projects.p1.title": "Web Prototype Application",
-        "projects.p1.desc": "A complete web platform with user authentication, real-time features, and a responsive dashboard. Built with modern frontend and backend technologies.",
+        "projects.p1.desc": "Web application for automotive catalog and management developed with React and Tailwind CSS, structured through independent custom hooks for advanced filtering, sorting, and optimized data pagination. It stands out by including an interactive financial simulator with real-time calculations and a dynamic image carousel with performance optimization, focused on delivering a smooth and premium-level user experience (UX).",
         "projects.p2.title": "Full-Stack Web Application",
-        "projects.p2.desc": "CloudCare is an AI-powered medical assistant that automates clinical summaries to reduce the administrative burden on healthcare professionals. It allows users to visualize medical records, analyze charts, and interact with patient data through a chatbot, utilizing a modern architecture with Angular, Spring Boot, and AWS",
+        "projects.p2.desc": "CloudCare is an AI-powered medical assistant that automates clinical summaries to reduce the administrative burden on healthcare professionals. It allows users to visualize medical records, analyze charts, and interact with patient data through a chatbot, utilizing a modern architecture with Angular, Spring Boot, and AWS.",
         "projects.p3.title": "CPM Algorithm",
-        "projects.p3.desc": "A microservices-based backend architecture with containerized deployment, API gateway, and centralized logging for scalable distributed systems.",
+        "projects.p3.desc": "Development and implementation of the CPM (Critical Path Method) algorithm into an interactive web application using Streamlit for comprehensive project optimization. The tool processes Excel-based data to calculate critical paths, generate iterative dynamic Gantt charts, and plot the Cost-Time optimization curve, automating strategic decision-making and exporting the results into a LaTeX report.",
         "projects.p4.title": "Web Experiment",
-        "projects.p4.desc": "A custom programming language compiler with lexical analysis, parsing, and code generation. Implemented using functional programming paradigms.",
+        "projects.p4.desc": "Geometric self-portrait developed using pure HTML and CSS, without external images or SVGs. This project showcases advanced frontend development techniques, using native variables, complex box-shadow manipulations, and border-radius calculations to create a fully responsive illustration.",
         "projects.btn.github": "Source Code",
         "projects.btn.demo": "Live Demo",
 
@@ -93,7 +93,6 @@ export const translations = {
         // Footer
         "footer.desc": "Building robust, scalable, and efficient software solutions. Always learning, always coding.",
         "footer.rights": "&copy; {year} Hugo Macías Jiménez. All rights reserved.",
-        "footer.built": "Designed & Built with <span class=\"text-primary-400\">❤</span>"
     },
     es: {
         // Navbar
@@ -151,13 +150,13 @@ export const translations = {
         "projects.inDevelopment": "En Desarrollo",
         "projects.main.desc": "Tikal es una plataforma avanzada de gestión de proyectos y productividad construida con React mediante arquitectura headless y sincronización en tiempo real. Además, integra un sistema global de seguimiento de tiempo (Time Tracker) y un innovador entorno gamificado diseñado para potenciar la concentración profunda",
         "projects.p1.title": "Prototipo de Aplicación Web",
-        "projects.p1.desc": "Una plataforma web completa con autenticación de usuarios, características en tiempo real y un panel de control responsivo. Construida con tecnologías modernas de frontend y backend.",
+        "projects.p1.desc": "Aplicación web de catálogo y gestión automotriz desarrollada con React y Tailwind CSS, estructurada mediante custom hooks independientes para un filtrado avanzado, ordenación y paginación optimizada de datos. Destaca por incluir un simulador financiero interactivo con cálculos en tiempo real y un carrusel de imágenes dinámico con optimización de rendimiento, enfocado en ofrecer una experiencia de usuario (UX) fluida y de nivel premium.",
         "projects.p2.title": "Aplicación Web Full-Stack",
-        "projects.p2.desc": "CloudCare es un asistente médico con IA que automatiza resúmenes clínicos para reducir la carga administrativa de los sanitarios. Permite visualizar historiales, analizar gráficas e interactuar con los datos del paciente mediante un chatbot, utilizando una arquitectura moderna con Angular, Spring Boot y AWS",
+        "projects.p2.desc": "CloudCare es un asistente médico con IA que automatiza resúmenes clínicos para reducir la carga administrativa de los sanitarios. Permite visualizar historiales, analizar gráficas e interactuar con los datos del paciente mediante un chatbot, utilizando una arquitectura moderna con Angular, Spring Boot y AWS.",
         "projects.p3.title": "Algorítmo CPM",
-        "projects.p3.desc": "Una arquitectura backend basada en microservicios con despliegue en contenedores, pasarela de API y registro centralizado para sistemas distribuidos escalables.",
+        "projects.p3.desc": "Desarrollo y su respectiva implementación en una aplicación web interactiva (mediante Streamlit) del algoritmo CPM (Critical Path Method) para la optimización integral de proyectos. La herramienta procesa datos en Excel para calcular rutas críticas, generar diagramas de Gantt dinámicos iterativos y trazar la curva de optimización Coste-Tiempo, automatizando la toma de decisiones estratégicas y exportando los resultados en un informe LaTeX.",
         "projects.p4.title": "Experimento Web",
-        "projects.p4.desc": "Un compilador de lenguaje de programación personalizado con análisis léxico, parsing y generación de código. Implementado usando paradigmas de programación funcional.",
+        "projects.p4.desc": "Autorretrato geométrico desarrollado con HTML y CSS puro, sin utilizar imágenes externas ni SVGs. Este proyecto usa un desarrollo de Frontend avanzado, empleando variables nativas, manipulaciones complejas de box-shadow y matemáticas con border-radius para lograr una ilustración responsive.",
         "projects.btn.github": "Código Fuente",
         "projects.btn.demo": "Demo en vivo",
 
@@ -189,6 +188,5 @@ export const translations = {
         // Footer
         "footer.desc": "Construyendo soluciones de software robustas, escalables y eficientes. Siempre aprendiendo, siempre programando.",
         "footer.rights": "&copy; {year} Hugo Macías Jiménez. Todos los derechos reservados.",
-        "footer.built": "Diseñado y construido con <span class=\"text-primary-400\">❤</span>"
     }
 };

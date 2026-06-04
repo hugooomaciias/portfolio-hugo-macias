@@ -1,5 +1,11 @@
 ---
+/**
+ * Footer Component
+ *
+ * Purpose: Displays the footer section with contact information and social links.
+ */
 
+import { Icon } from "astro-icon/components";
 ---
 
 <!-- ==================== FOOTER ==================== -->
@@ -10,63 +16,33 @@
         <div class="grid md:grid-cols-2 gap-8 items-center mb-12">
             <div>
                 <a href="#hero" class="flex items-center gap-2.5 group mb-4">
-                    <div
-                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20"
-                    >
-                        <span class="text-white font-semibold text-sm">H</span>
-                    </div>
+                    <img src="/src/assets/HM_Avatar.svg" alt="Logo" class="w-8 h-8" />
                     <span
                         class="text-slate-900 dark:text-white font-semibold text-lg tracking-tight"
                         >Hugo Macías</span
                     >
                 </a>
-                <p
-                    class="text-slate-600 dark:text-slate-400 text-sm font-light max-w-sm"
-                >
-                    Building robust, scalable, and efficient software solutions.
-                    Always learning, always coding.
-                </p>
+                <p class="text-slate-600 dark:text-slate-400 text-sm font-light max-w-sm" data-i18n="footer.desc"></p>
             </div>
             <div class="flex flex-wrap md:justify-end gap-4">
                 <a
-                    href="#"
+                    href="https://github.com/hugooomaciias" target="_blank" rel="noopener noreferrer"
                     class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-primary-500/30 transition-all duration-300"
                 >
-                    <span
-                        class="iconify"
-                        data-icon="lucide:github"
-                        data-width="18"></span>
+                    <Icon name="tabler:brand-github-filled" class="w-5 h-5" />
                 </a>
                 <a
-                    href="#"
+                    href="https://www.linkedin.com/in/hugo-macias-jimenez-199a7933b/" target="_blank" rel="noopener noreferrer"
                     class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-primary-500/30 transition-all duration-300"
                 >
-                    <span
-                        class="iconify"
-                        data-icon="lucide:linkedin"
-                        data-width="18"></span>
-                </a>
-                <a
-                    href="#"
-                    class="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-slate-100 dark:hover:bg-white/10 hover:border-primary-500/30 transition-all duration-300"
-                >
-                    <span
-                        class="iconify"
-                        data-icon="lucide:twitter"
-                        data-width="18"></span>
+                    <Icon name="tabler:brand-linkedin-filled" class="w-5 h-5" />
                 </a>
             </div>
         </div>
         <div
             class="border-t border-slate-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
         >
-            <p class="text-slate-600 dark:text-slate-500 text-xs font-light">
-                &copy; {new Date().getFullYear()} Hugo Macías Jiménez. All rights
-                reserved.
-            </p>
-            <p class="text-slate-600 dark:text-slate-500 text-xs font-light">
-                Designed & Built with <span class="text-primary-400">❤</span>
-            </p>
+            <p class="text-slate-600 dark:text-slate-500 text-xs font-light" data-i18n="footer.rights"></p>
         </div>
     </div>
 </footer>
