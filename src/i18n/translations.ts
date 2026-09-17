@@ -147,7 +147,7 @@ export const translations = {
         "projects.title": "Proyectos",
         "projects.heading": "Trabajo Destacado",
         "projects.subtitle": "Una selección de proyectos académicos y personales que muestran mis habilidades y pasión por el desarrollo de software.",
-        "projects.inDevelopment": "En Desarrollo",
+        "projects.inDevelopment": "En desarrollo",
         "projects.main.desc": "Tikal es una plataforma avanzada de gestión de proyectos y productividad construida con React mediante arquitectura headless y sincronización en tiempo real. Además, integra un sistema global de seguimiento de tiempo (Time Tracker) y un innovador entorno gamificado diseñado para potenciar la concentración profunda",
         "projects.p1.title": "Prototipo de Aplicación Web",
         "projects.p1.desc": "Aplicación web de catálogo y gestión automotriz desarrollada con React y Tailwind CSS, estructurada mediante custom hooks independientes para un filtrado avanzado, ordenación y paginación optimizada de datos. Destaca por incluir un simulador financiero interactivo con cálculos en tiempo real y un carrusel de imágenes dinámico con optimización de rendimiento, enfocado en ofrecer una experiencia de usuario (UX) fluida y de nivel premium.",
@@ -157,7 +157,7 @@ export const translations = {
         "projects.p3.desc": "Desarrollo y su respectiva implementación en una aplicación web interactiva (mediante Streamlit) del algoritmo CPM (Critical Path Method) para la optimización integral de proyectos. La herramienta procesa datos en Excel para calcular rutas críticas, generar diagramas de Gantt dinámicos iterativos y trazar la curva de optimización Coste-Tiempo, automatizando la toma de decisiones estratégicas y exportando los resultados en un informe LaTeX.",
         "projects.p4.title": "Experimento Web",
         "projects.p4.desc": "Autorretrato geométrico desarrollado con HTML y CSS puro, sin utilizar imágenes externas ni SVGs. Este proyecto usa un desarrollo de Frontend avanzado, empleando variables nativas, manipulaciones complejas de box-shadow y matemáticas con border-radius para lograr una ilustración responsive.",
-        "projects.btn.github": "Código Fuente",
+        "projects.btn.github": "Código fuente",
         "projects.btn.demo": "Demo en vivo",
 
         // Skills

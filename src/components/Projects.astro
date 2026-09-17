@@ -28,8 +28,7 @@ const secondaryProjects = [
         icon: "tabler:world",
         tags: ["React", "JavaScript", "HTML", "Tailwind CSS"],
         demo: "https://auto-miari.vercel.app/",
-        github: "https://github.com/hugooomaciias/Auto-Miari",
-        inDevelopment: true,
+        github: "https://github.com/hugooomaciias/Auto-Miari"
     },
     {
         company: "CloudCare",
@@ -137,7 +136,7 @@ const secondaryProjects = [
                 <div class="flex flex-wrap gap-2 mb-6">
                     {
                         mainProjectTechnologies.map((technologie) => (
-                            <span class="text-[11px] font-semibold uppercase tracking-wide text-primary-700 dark:text-primary-400 bg-primary-600/10 dark:bg-primary-500/10 border border-primary-600/20 dark:border-primary-500/20 px-2 py-1.5 rounded-lg">
+                            <span class="text-[10px] font-medium uppercase tracking-wider text-secondary-600 dark:text-secondary-400 bg-secondary-200/50 dark:bg-secondary-800/70 border border-secondary-400/50 dark:border-secondary-500/40 px-2 py-1.5 rounded-lg">
                                 {technologie}
                             </span>
                         ))
@@ -146,9 +145,18 @@ const secondaryProjects = [
 
                 <div class="flex items-center gap-4">
                     <a
+                        href="https://tikal-sage.vercel.app/"
+                        target="_blank" rel="noopener noreferrer"
+                        class="btn-primary text-secondary text-xs px-4 py-2 rounded-full transition-all duration-300 inline-flex items-center gap-1.5"
+                    >
+                        <Icon name="tabler:external-link" class="w-4 h-4" />
+                        <span data-i18n="projects.btn.demo"></span>
+                    </a>
+
+                    <a
                         href="https://github.com/hugooomaciias/Tikal"
                         target="_blank" rel="noopener noreferrer"
-                        class="btn-primary text-secondary text-sm font-semibold px-6 py-2.5 rounded-xl inline-flex items-center gap-2"
+                        class="text-xs font-medium text-primary-400 bg-primary-500/10 hover:bg-primary-500/20 border border-primary-500/20 hover:border-primary-500/30 px-4 py-2 rounded-xl transition-all duration-300 inline-flex items-center gap-1.5"
                     >
                         <Icon name="tabler:brand-github-filled" class="w-5 h-5" />
                         <span data-i18n="projects.btn.github"></span>
